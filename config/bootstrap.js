@@ -9,6 +9,9 @@
  * https://sailsjs.com/config/bootstrap
  */
 
+//const Login = require("../api/models/Login");
+//const UserRole = require("../api/models/UserRole");
+
 module.exports.bootstrap = async function() {
 
   // By convention, this is a good place to set up fake data during development.
@@ -16,15 +19,26 @@ module.exports.bootstrap = async function() {
   // For example:
   // ```
   // // Set up fake development data (or if we already have some, avast)
-  // if (await User.count() > 0) {
-  //   return;
-  // }
-  //
-  // await User.createEach([
-  //   { emailAddress: 'ry@example.com', fullName: 'Ryan Dahl', },
-  //   { emailAddress: 'rachael@example.com', fullName: 'Rachael Shaw', },
-  //   // etc.
-  // ]);
-  // ```
+   if (await User.count() > 0) {
+     return;
+   }
+  for (let identity in sails.models) {
+    await sails.models[identity].destroy({});
+  }
+   //create userrole
+  await UserRole.createEach([
+    { roleName: "admin", isAdmin: true},
+    { roleName: "paralegal", isAdmin: false},
+  ]);
+
+
+  // create temp user for testing
+   await User.createEach([
+     { username: 'mguthriejr', first_name: 'Mark', last_name: 'Guthrie', email: 'mguthriejr@gmail.com', emailStatus: 'confirmed',  },
+     { username: 'admin', first_name: 'admin', last_name: 'test', email: 'admin@admin.com', emailStatus: 'confirmed',},
+   ]);
+   await Login.createEach([
+    { username: 'mguthriejr', password: await sails.helpers.passwords.hashPassword('abc123')}
+  ]);
 
 };

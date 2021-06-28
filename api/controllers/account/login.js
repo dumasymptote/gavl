@@ -36,7 +36,7 @@ module.exports = {
 
   fn: async function ({username, password, rememberme}){
     //username look up. set to lowercase first to avoid case sensitivity
-    var userRecord = await User.findOne({
+    var userRecord = await Login.findOne({
       username: username.toLowerCase(),
     });
     //if no user record then kick out via bad combo exit
