@@ -20,8 +20,8 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/':                        { view: 'pages/homepage' },
-  'GET /account/login':               { action: 'account/view-login'}
-
+  'GET /account/login':       { action: 'account/view-login'},
+  'POST /account/login':      { action: 'account/login'},
 
   /***************************************************************************
   *                                                                          *
