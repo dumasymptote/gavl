@@ -23,6 +23,7 @@ module.exports.routes = {
   'GET /account/login':       { action: 'account/view-login'},
   'POST /account/login':      { action: 'account/login'},
 
+  'GET /account/profile':     { action: 'account/view-profile'}
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
