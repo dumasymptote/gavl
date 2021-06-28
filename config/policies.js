@@ -16,7 +16,7 @@ module.exports.policies = {
   * (`true` allows public access)                                            *
   *                                                                          *
   ***************************************************************************/
-
-  // '*': true,
-
+  AccountController: {
+    'profile': 'is-logged-in'
+  }
 };
