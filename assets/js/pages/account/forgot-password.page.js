@@ -1,4 +1,4 @@
-parasails.registerPage('profile', {
+parasails.registerPage('forgot-password', {
   //  ╦╔╗╔╦╔╦╗╦╔═╗╦    ╔═╗╔╦╗╔═╗╔╦╗╔═╗
   //  ║║║║║ ║ ║╠═╣║    ╚═╗ ║ ╠═╣ ║ ║╣
   //  ╩╝╚╝╩ ╩ ╩╩ ╩╩═╝  ╚═╝ ╩ ╩ ╩ ╩ ╚═╝
@@ -7,14 +7,19 @@ parasails.registerPage('profile', {
     syncing: false,
 
     // Form data
-    formData: { /* … */ },
+    formData: {
+      rememberMe: true,
+    },
 
     // For tracking client-side validation errors in our form.
     // > Has property set to `true` for each invalid property in `formData`.
     formErrors: { /* … */ },
 
-    // Form rules
+    // A set of validation rules for our form.
+    // > The form will not be submitted if these are invalid.
     formRules: {
+      username: { required: true },
+      password: { required: true },
     },
 
     // Server error state for the form
@@ -25,8 +30,7 @@ parasails.registerPage('profile', {
   //  ║  ║╠╣ ║╣ ║  ╚╦╝║  ║  ║╣
   //  ╩═╝╩╚  ╚═╝╚═╝ ╩ ╚═╝╩═╝╚═╝
   beforeMount: function() {
-    // Set the form data.
-
+    //…
   },
   mounted: async function() {
     //…
@@ -36,6 +40,14 @@ parasails.registerPage('profile', {
   //  ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║║ ║║║║╚═╗
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
+
+    //submittedForm: async function() {
+      // Redirect to the logged-in dashboard on success.
+      // > (Note that we re-enable the syncing state here.  This is on purpose--
+      // > to make sure the spinner stays there until the page navigation finishes.)
+    //  this.syncing = true;
+    //  window.location = '/';
+    //},
 
   }
 });
