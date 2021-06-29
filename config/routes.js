@@ -24,7 +24,7 @@ module.exports.routes = {
   'POST /account/login':      { action: 'account/login'},
 
   'GET /account/profile':     { action: 'account/view-profile'},
-  'GET /account/forgot-password': { action: 'account/view-forgot-password'}
+  'GET /account/forgot-password': { action: 'account/view-forgot-password'},
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
@@ -35,6 +35,6 @@ module.exports.routes = {
   * not match any of those, it is matched against static assets.             *
   *                                                                          *
   ***************************************************************************/
-
+   'POST  /api/v1/account/send-password-recovery-email': { action: 'account/send-password-recovery-email' },
 
 };

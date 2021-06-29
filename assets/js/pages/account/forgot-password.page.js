@@ -14,18 +14,15 @@ parasails.registerPage('forgot-password', {
     // For tracking client-side validation errors in our form.
     // > Has property set to `true` for each invalid property in `formData`.
     formErrors: { /* … */ },
-
     // A set of validation rules for our form.
     // > The form will not be submitted if these are invalid.
     formRules: {
-      username: { required: true },
-      password: { required: true },
+      emailAddress: { required: true, isEmail: true },
     },
-
     // Server error state for the form
     cloudError: '',
+    cloudSuccess: false,
   },
-
   //  ╦  ╦╔═╗╔═╗╔═╗╦ ╦╔═╗╦  ╔═╗
   //  ║  ║╠╣ ║╣ ║  ╚╦╝║  ║  ║╣
   //  ╩═╝╩╚  ╚═╝╚═╝ ╩ ╚═╝╩═╝╚═╝
@@ -35,19 +32,13 @@ parasails.registerPage('forgot-password', {
   mounted: async function() {
     //…
   },
-
   //  ╦╔╗╔╔╦╗╔═╗╦═╗╔═╗╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
   //  ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║║ ║║║║╚═╗
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
-
-    //submittedForm: async function() {
-      // Redirect to the logged-in dashboard on success.
-      // > (Note that we re-enable the syncing state here.  This is on purpose--
-      // > to make sure the spinner stays there until the page navigation finishes.)
-    //  this.syncing = true;
-    //  window.location = '/';
-    //},
-
+    submittedForm: async function() {
+      // If it worked, show the success message.
+      this.cloudSuccess = true;
+    },
   }
 });

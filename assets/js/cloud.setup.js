@@ -13,7 +13,7 @@
 Cloud.setup({
 
   /* eslint-disable */
-  methods: {"login":{"verb":"POST","url":"/account/login","args":["username","password","rememberme"]}}
+  methods: {"login":{"verb":"POST","url":"/account/login","args":["username","password","rememberme"]},"sendPasswordRecoveryEmail":{"verb":"POST","url":"/api/v1/account/send-password-recovery-email","args":["emailAddress"]}}
   /* eslint-enable */
 
 });
